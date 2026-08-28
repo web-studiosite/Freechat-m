@@ -1,7 +1,7 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
-export const SUPABASE_URL = "COLE_AQUI_A_URL_DO_SEU_PROJETO";
-export const SUPABASE_ANON_KEY = "COLE_AQUI_A_CHAVE_PUBLICA_ANON";
+export const SUPABASE_URL = "https://geigdzmvhcvbxsbhgvvj.supabase.co";
+export const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdlaWdkem12aGN2YnhzYmhndnZqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc5NDE1NjIsImV4cCI6MjEwMzUxNzU2Mn0.OLZAA_Ru1OVizUrlxDF6vdJN9RK-vNqBjZdidcTjvzE";
 
 export function isConfigured(){
   return SUPABASE_URL.startsWith("https://") &&
