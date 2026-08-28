@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>FreeChat — Conheça alguém novo</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topbar"><a class="brand" href="index.html">FreeChat</a><nav>
+  <a href="online.html">🟢 Online</a><a href="messages.html">📬 Mensagens</a><a href="profile.html">👤 Perfil</a>
+</nav></header>
+<main class="hero">
+  <section class="hero-card">
+    <span class="eyebrow">CONHEÇA ALGUÉM NOVO</span>
+    <h1>Converse com alguém que você ainda não conhece.</h1>
+    <p>Encontre uma pessoa aleatória ou escolha alguém que esteja online e disponível.</p>
+    <div class="actions">
+      <button class="primary" id="randomBtn">🔀 Encontrar alguém</button>
+      <a class="button secondary" href="online.html">🟢 Ver quem está online</a>
+    </div>
+    <div class="features"><span>🌍 Pessoas novas</span><span>💬 Tempo real</span><span>🔒 Privacidade</span><span>📬 Mensagens salvas</span></div>
+  </section>
+</main>
+<script type="module" src="js/auth.js"></script>
+<script type="module">
+  import { ensureSession, getProfile } from "./js/auth.js";
+  document.querySelector("#randomBtn").onclick = async () => {
+    const session = await ensureSession();
+    if (!session) return;
+    const p = await getProfile(session.user.id);
+    if (!p?.nickname) location.href = "profile.html?setup=1";
+    else location.href = "match.html";
+  };
+</script>
+</body>
+</html>

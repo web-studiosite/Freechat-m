@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="pt">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chat — Conversa</title><link rel="stylesheet" href="css/style.css"></head>
+<body class="chat-body">
+<div class="chat-shell">
+<header class="chat-head"><a href="messages.html">←</a><div><strong id="partner">FreeChat</strong><small id="partnerStatus">Carregando...</small></div><button id="menuBtn">⋮</button></header>
+<div id="menu" class="menu hidden"><button id="leaveBtn">Sair da conversa</button><button id="blockBtn">Bloquear</button><button id="reportBtn">🚩 Denunciar</button></div>
+<main id="messages" class="messages"></main>
+<form id="composer" class="composer"><input id="input" maxlength="2000" autocomplete="off" placeholder="Digite uma mensagem..."><button>➤</button></form>
+</div>
+<script type="module" src="js/chat.js"></script>
+</body></html>
