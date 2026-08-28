@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Perfil — FreeChat</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="index.html">FreeChat</a>
+  <nav>
+    <a href="online.html">🟢 Online</a>
+    <a href="messages.html">📬 Mensagens</a>
+    <a href="profile.html">👤 Perfil</a>
+  </nav>
+</header>
+
+<main class="page narrow">
+  <div class="card">
+    <span class="eyebrow">MEU PERFIL</span>
+    <h1 id="title">Criar meu perfil</h1>
+    <p id="intro">Escolha um nickname para que outras pessoas possam conversar com você.</p>
+
+    <div id="profileError" class="notice" aria-live="polite"></div>
+
+    <form id="profileForm">
+      <label for="nickname">
+        Apelido
+        <input
+          id="nickname"
+          name="nickname"
+          type="text"
+          maxlength="30"
+          minlength="2"
+          autocomplete="nickname"
+          placeholder="Ex.: LuaAzul"
+          required
+        >
+      </label>
+
+      <label class="switch">
+        <input id="available" name="available" type="checkbox" checked>
+        <span>🟢 Estou disponível para conversar</span>
+      </label>
+
+      <button id="save" type="submit" class="primary">💾 Salvar perfil</button>
+    </form>
+
+    <div id="profileActions" hidden>
+      <div class="notice" id="successMessage" aria-live="polite"></div>
+
+      <div class="actions">
+        <a class="button primary" href="match.html">🔀 Encontrar alguém</a>
+        <a class="button secondary" href="online.html">🟢 Pessoas online</a>
+      </div>
+
+      <div class="actions">
+        <a class="button secondary" href="messages.html">📬 Minhas mensagens</a>
+        <a class="button secondary" href="index.html">← Início</a>
+      </div>
+    </div>
+
+    <div class="actions">
+      <a class="button secondary" href="index.html">← Voltar ao início</a>
+    </div>
+  </div>
+</main>
+
+<script type="module" src="js/profile.js"></script>
+</body>
+</html>

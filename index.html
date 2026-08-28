@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>FreeChat — Converse com alguém novo</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="index.html">FreeChat</a>
+  <nav>
+    <a href="online.html">🟢 Online</a>
+    <a href="messages.html">📬 Mensagens</a>
+    <a href="profile.html">👤 Perfil</a>
+  </nav>
+</header>
+
+<main class="hero">
+  <section class="hero-card">
+    <span class="eyebrow">CONVERSE COM ALGUÉM NOVO</span>
+    <h1>Converse com alguém que você ainda não conhece.</h1>
+    <p>Encontre uma pessoa aleatória ou escolha alguém que esteja online e disponível.</p>
+
+    <div class="actions">
+      <button type="button" class="primary" id="randomBtn">🔀 Encontrar alguém</button>
+      <a class="button secondary" href="online.html">🟢 Pessoas online</a>
+    </div>
+
+    <div class="actions profile-actions">
+      <a class="button secondary" href="profile.html">👤 Criar / editar perfil</a>
+      <a class="button secondary" href="messages.html">📬 Minhas mensagens</a>
+    </div>
+
+    <div id="homeNotice" class="notice" aria-live="polite"></div>
+
+    <div class="features">
+      <span>🌍 Pessoas novas</span>
+      <span>💬 Tempo real</span>
+      <span>🔒 Privacidade</span>
+      <span>📬 Mensagens salvas</span>
+    </div>
+  </section>
+</main>
+
+<script type="module">
+  import { ensureSession, getProfile } from "./js/auth.js";
+
+  const randomBtn = document.getElementById("randomBtn");
+  const notice = document.getElementById("homeNotice");
+
+  randomBtn.addEventListener("click", async () => {
+    randomBtn.disabled = true;
+    randomBtn.textContent = "A verificar...";
+
+    try {
+      const session = await ensureSession();
+
+      if (!session) {
+        notice.textContent = "Não foi possível iniciar a sessão.";
+        return;
+      }
+
+      const profile = await getProfile(session.user.id);
+
+      if (!profile || !profile.nickname) {
+        location.href = "profile.html?setup=1&next=match";
+        return;
+      }
+
+      location.href = "match.html";
+    } catch (error) {
+      console.error(error);
+      notice.textContent = "Não foi possível continuar. Tente novamente.";
+    } finally {
+      randomBtn.disabled = false;
+      randomBtn.textContent = "🔀 Encontrar alguém";
+    }
+  });
+</script>
+</body>
+</html>
